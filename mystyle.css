@@ -3,7 +3,7 @@
     position: absolute;
     top: 100px;
     left: 8vw;
-    background-color: black;
+    background-color: transparent;
     z-index: 1;
 }
 body{
@@ -82,5 +82,122 @@ body{
     background-color: rgb(33 150 243);
     border-radius: 0.5rem;
   }
+  .contenedor {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    border-radius: 50%;
+    display: flex; 
+  }
   
+  .play-btn {
+    position: absolute;
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(#47daff, #0b9c95);
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .play-btn::before {
+    content: "";
+    position: absolute;
+    width: 93%;
+    height: 93%;
+    background-color: #000;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .play-btn:checked {
+    animation: borderAnimate 700ms ease-in-out 1;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes borderAnimate {
+    0% {
+      transform: rotate(0);
+      background: conic-gradient(#47daff, transparent 20%);
+    }
+  
+    80% {
+      background: conic-gradient(#47daff, transparent 90%);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+      background: conic-gradient(#47daff, #47daff);
+    }
+  }
+  main{
+    background-color: transparent;
+  }
+  .play-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 60%;
+    top: 50%;
+    background-color: #47daff;
+    transform: translate(-60%, -50%) rotate(90deg);
+    clip-path: polygon(50% 15%, 0% 100%, 100% 100%);
+    transition: all 400ms ease-in-out;
+    cursor: pointer;
+  }
+  
+  .play-btn:checked + .play-icon {
+    clip-path: polygon(0 100%, 0% 100%, 100% 100%);
+  }
+  
+  .pause-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+  
+  .pause-icon::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background-color: #47daff;
+    left: 0;
+  }
+  
+  .pause-icon::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    background-color: #47daff;
+    right: 0;
+  }
+  
+  .play-btn:checked ~ .pause-icon::before {
+    animation: reveal 300ms ease-in-out 350ms 1;
+    animation-fill-mode: forwards;
+  }
+  
+  .play-btn:checked ~ .pause-icon::after {
+    animation: reveal 300ms ease-in-out 600ms 1;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes reveal {
+    0% {
+      width: 0;
+    }
+  
+    100% {
+      width: 35%;
+    }
+  }
   

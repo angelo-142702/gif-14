@@ -1,25 +1,21 @@
 const massage = document.querySelector('#massage')
-const btn = document.querySelector('#btn')
-let mensajes= ['bueno gracias por visitarme otra vez te debo o debí importar mucho', 'sí estas aquí es porque no funcionó lo nuestro ', 'de verdad te aprecio mucho y aun más si ves esto', 'esté es mi ultimo Adiós mi ultimo te quiero y quisiera que el ultimo beso joder! los tuyos eran los mejores', 'nunca nos entendimos, fuimos egoistas los dos. y orgullosos más que el carajo','vi como tu ammor se apagaba poco a poco y no hice y me hacia el estupido', 'si queise que fuera diferente pero la historia fue otra', 'Gracias por ser mis mas bonita casualidad , mi desastre mas divertido y hermoso gracias por mirarme como sí lo fuera todo 🥺'] 
-const pista = document.querySelector(".pista");
-const btnPlay = document.querySelector(".play-btn");
-const contenedor = document.querySelector(".contenedor");
+const btn = document.querySelector('#btn');
+const title = document.querySelector('.title');
+let mensajes= ['Quiero pedir un deseo esta noche,\n quiero que mi alma llene el cielo,\n quiero que se paren los relojes,\n que se detenga el tiempo,\n y que de mí te enamores.','Si enamorarnos nos causa la muerte,\n Y desaparecerme te daría la vida,\n Prefiero amarte a escondidas.\n Y que sigas con vida',
+'Si amarte fuera la guerra,\nY no amarte fuera la paz,\nEscogería morir en la guerra,\nQue vivir en paz.',
+'Te mando un abrazo por si tienes frío\n una sonrisa por si estás triste\n un ángel para que te cuide\ny este mensaje para que no me olvides.\n',
+'Mi alma no va a dejar de quererte,\nYa que ella nació para amarte.\nNo existe manera de perderte,\nSi todos los días trata de enamorarte'] 
 let currentMessage = 0;
-contenedor.style.display = "none";
-
-btn.addEventListener('click', changeMessage);
-function solatar(){
-  pista.play()
-  setTimeout(()=>{
-    window.location.reload();
-  },28000)
+function final() {
+  title.innerText = 'call me 😏';
 }
 function changeMessage () {
+  console.log(currentMessage);
     massage.textContent = mensajes[currentMessage];
     currentMessage = (currentMessage + 1) % mensajes.length;
-    if(currentMessage == mensajes.length-1){
-        contenedor.style.display = "block"
+    if(currentMessage == 4){
+            final();
     }
 }
-btnPlay.addEventListener('click', solatar);
+btn.addEventListener('click', changeMessage);
 
